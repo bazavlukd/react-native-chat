@@ -6,8 +6,18 @@ const Stack = createStackNavigator();
 
 export default function AuthStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name='Home' component={HomeScreen} />
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#6646ee",
+        },
+        headerTintColor: "#ffffff",
+        headerTitleStyle: {
+          fontSize: 22,
+        },
+      }}
+    >
+      <Stack.Screen name="Home" component={HomeScreen} />
     </Stack.Navigator>
   );
 }
