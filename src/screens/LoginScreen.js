@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import { Title } from 'react-native-paper';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
@@ -12,6 +12,8 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
+
       <Title style={styles.titleText}>Welcome to Chat app</Title>
       <FormInput
         labelName='Email'
