@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
 import { View, StatusBar, StyleSheet } from 'react-native';
 import { IconButton, Title } from 'react-native-paper';
+import { Firestore } from '../config/FirebaseSDK';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 
 export default function AddRoomScreen({ navigation }) {
   const [roomName, setRoomName] = useState('');
+
+  /**
+   * Create a new Firestore collection to save threads
+   */
+   const handleButtonPress = async () => {
+     if (roomName.length > 0) {
+       try {
+        await Firestore
+          .collection('THREADS')
+          .add({
+            name: roomName
+          });
+
+        navigation.navigate('Home');
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   return (
     <View style={styles.rootContainer}>
