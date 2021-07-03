@@ -4,10 +4,13 @@ import { List, Divider } from "react-native-paper";
 import { AuthContext } from "../navigation/AuthProvider";
 import { Firestore } from "../config/FirebaseSDK";
 import Loading from "../components/Loading";
+import useStatsBar from '../utils/useStatusBar';
 
 export default function HomeScreen({ navigation }) {
   const [threads, setThreads] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  useStatsBar('light-content');
 
   useEffect(() => {
     const unsubscribe = Firestore.collection("THREADS")

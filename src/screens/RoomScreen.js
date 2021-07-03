@@ -9,12 +9,15 @@ import { IconButton } from "react-native-paper";
 import { ActivityIndicator, View, StyleSheet } from "react-native";
 import { AuthContext } from "../navigation/AuthProvider";
 import { Firestore } from "../config/FirebaseSDK";
+import useStatsBar from '../utils/useStatusBar';
 
 export default function RoomScreen({ route }) {
   const { thread } = route.params;
   const { user } = useContext(AuthContext);
   const currentUser = user.toJSON();
   const [messages, setMessages] = useState([]);
+
+  useStatsBar('light-content');
 
   // sends a message
   const handleSend = async (messages) => {

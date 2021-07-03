@@ -4,9 +4,12 @@ import { IconButton, Title } from 'react-native-paper';
 import { Firestore } from '../config/FirebaseSDK';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
+import useStatsBar from '../utils/useStatusBar';
 
 export default function AddRoomScreen({ navigation }) {
   const [roomName, setRoomName] = useState('');
+
+  useStatsBar('dark-content');
 
   /**
    * Create a new Firestore collection to save threads
@@ -38,8 +41,6 @@ export default function AddRoomScreen({ navigation }) {
 
   return (
     <View style={styles.rootContainer}>
-      <StatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
-
       <View style={styles.closeButtonContainer}>
         <IconButton
           icon='close-circle'

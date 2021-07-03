@@ -12,8 +12,6 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
-
       <Title style={styles.titleText}>Welcome to Chat app</Title>
       <FormInput
         labelName='Email'
