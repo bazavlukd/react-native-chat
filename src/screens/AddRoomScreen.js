@@ -14,11 +14,20 @@ export default function AddRoomScreen({ navigation }) {
    const handleButtonPress = async () => {
      if (roomName.length > 0) {
        try {
-        await Firestore
-          .collection('THREADS')
+        let docRef = await Firestore.collection('THREADS')
           .add({
-            name: roomName
+            name: roomName,
+            latestMessage: {
+              text: `You have joined the room ${roomName}.`,
+              createdAt: new Date().getTime()
+            }
           });
+
+        await docRef.collection('MESSAGES').add({
+          text: `You have joined the room ${roomName}.`,
+          createdAt: new Date().getTime(),
+          system: true
+        });
 
         navigation.navigate('Home');
       } catch (error) {
